@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { MyAlert } from './components/alert';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 import { Formulario } from './components/formulario';
 import { Card, CardBody } from 'react-bootstrap';
-import { BaseColaboradores } from './components/listado';
+import { BaseColaboradores } from './data/base-colaboradores';
 import { Colaborador } from './interfases/colaborador';
-
+import { Listado } from './components/listado';
 function App() {
 	const [validated, setValidated] = useState(false);
 	const [alertMessage, setAlertMessage] = useState<string | null>(null);
@@ -13,6 +14,10 @@ function App() {
 
 	return (
 		<div className="main-container">
+			<div className="table-container">
+				<Listado listaColaboradores={listaColaboradores}/>
+			</div>
+			<div className="form-container">
 			<Card>
 				<CardBody>
 					<Card.Title className='text-center fw-bold my-4'>Agregar Colaborador</Card.Title>
@@ -22,9 +27,10 @@ function App() {
 						setlistaColaboradores={setlistaColaboradores}
 						listaColaboradores={listaColaboradores}
 					/>
+					{validated && <MyAlert message={alertMessage} />}
 				</CardBody>
 			</Card>
-			{validated && <MyAlert message={alertMessage} />}
+			</div>
 		</div>
 	)
 }

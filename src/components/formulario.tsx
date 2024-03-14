@@ -11,17 +11,18 @@ interface HijoProps {
 
 export const Formulario: React.FC<HijoProps> = ({formValidatedValue,alertMessageProps, setlistaColaboradores, listaColaboradores }) => {
 	const [formData, setFormData] = useState({
-		nombre: "Juan Soto",
-		correo: "juans@colaborador.com",
-		edad: 23,
-		cargo: "Desarrollador FrontEnd",
-		telefono: 99887766
+		nombre: "",
+		correo: "",
+		edad: undefined,
+		cargo: "",
+		telefono: undefined
 	});
 
 	const [validated, setValidated] = useState(false);
 
-	const handleChange = (fieldName: string, value: string) => {
+	const handleChange = (fieldName: string, value: string | number) => {
 		setFormData({ ...formData, [fieldName]: value });
+		console.log(formData)
 	};
 
 	const handleSubmit = (event: any) => {
@@ -48,6 +49,7 @@ export const Formulario: React.FC<HijoProps> = ({formValidatedValue,alertMessage
 				}]
 			)
 		}
+		
 		formValidatedValue(true)
 		setValidated(true)
 		console.log(listaColaboradores)
@@ -55,7 +57,7 @@ export const Formulario: React.FC<HijoProps> = ({formValidatedValue,alertMessage
 
 	const formFields = [
 		{ name: "nombre", placeholder: "Nombre del colaborador", type: "text" },
-		{ name: "email", placeholder: "Email del colaborador", type: "email" },
+		{ name: "correo", placeholder: "Email del colaborador", type: "email" },
 		{ name: "edad", placeholder: "Edad del colaborador", type: "number" },
 		{ name: "cargo", placeholder: "Cargo del colaborador", type: "text" },
 		{ name: "telefono", placeholder: "Teléfono del colaborador", type: "number" }

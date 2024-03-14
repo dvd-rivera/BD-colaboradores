@@ -12,16 +12,17 @@ background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0
 }
 
 .main-container {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .formulario-container {
-  width: 400px;
-  max-width: 400px;
+  width: 600px;
+  max-width: 600px;
   min-height: 200px;
   display: flex;
   align-items: center;
@@ -29,15 +30,18 @@ background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0
   flex-wrap: wrap;
 }
 
-.socialMediaContainer{
-  border: solid 1px #a6a6a6;
-  border-radius: 100%;
-  min-width: 50px;
-  min-height: 50px;
-  display: grid;
-  place-items: center;
+.alert{
+	text-align: center;
 }
 
-.alert{
-  max-width: 250px;
+.card {
+	width: 300px;
+}
+
+.table-container button {
+	font-size: 12px;
+}
+
+.table-container td {
+	vertical-align: middle;
 }
