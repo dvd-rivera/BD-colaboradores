@@ -1,0 +1,25 @@
+# Comentarios comienzan con el símbolo de almohadilla (#)
+# Define las reglas para todos los archivos en el proyecto
+
+# Establece el estilo de indentación (espacios o tabulaciones)
+[*]
+indent_style = tab
+indent_size = 2
+
+# Define el tipo de salto de línea (LF o CRLF)
+end_of_line = lf
+
+# Establece el juego de caracteres (UTF-8 recomendado)
+charset = utf-8
+
+# Define el tamaño de la pestaña (si se utiliza indentación con tabulaciones)
+tab_width = 4
+
+# Reglas específicas para archivos con extensión .js
+[*.js]
+indent_size = 4
+max_line_length = 120
+
+# Reglas específicas para archivos con extensión .css
+[*.css]
+indent_size = 2
