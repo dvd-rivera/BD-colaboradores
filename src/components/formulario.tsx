@@ -9,7 +9,7 @@ interface HijoProps {
 	listaColaboradores: Colaborador[]
 }
 
-export const Formulario: React.FC<HijoProps> = ({formValidatedValue,alertMessageProps, setlistaColaboradores, listaColaboradores }) => {
+export const Formulario: React.FC<HijoProps> = ({ formValidatedValue, alertMessageProps, setlistaColaboradores, listaColaboradores }) => {
 	const [formData, setFormData] = useState({
 		nombre: "",
 		correo: "",
@@ -26,16 +26,17 @@ export const Formulario: React.FC<HijoProps> = ({formValidatedValue,alertMessage
 	};
 
 	const handleSubmit = (event: any) => {
-		event.preventDefault();		
+		event.preventDefault();
 		const form = event.currentTarget;
-		if (	form.checkValidity() === false 
-			|| formData.nombre === '' 
-			|| formData.correo === '' 
+		if (form.checkValidity() === false
+			|| formData.nombre === ''
+			|| formData.correo === ''
 			|| formData.edad === undefined
 			|| formData.cargo === ''
-			|| formData.telefono === undefined   ) {
-		  event.stopPropagation();
-		  alertMessageProps('Todos los campos son obligatorios');
+			|| formData.telefono === undefined) {
+			event.stopPropagation();
+			alertMessageProps('Todos los campos son obligatorios');
+			setValidated(false);
 		} else {
 			alertMessageProps('Se ha agregado el colaborador');
 			setlistaColaboradores(
@@ -47,9 +48,10 @@ export const Formulario: React.FC<HijoProps> = ({formValidatedValue,alertMessage
 					cargo: formData.cargo,
 					telefono: formData.telefono
 				}]
-			)
+			);
 		}
 		
+
 		formValidatedValue(true)
 		setValidated(true)
 		console.log(listaColaboradores)

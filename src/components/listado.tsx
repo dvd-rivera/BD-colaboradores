@@ -7,23 +7,24 @@ import { Form } from 'react-bootstrap';
 
 
 interface TableProps {
-	listaColaboradores: Colaborador[]
+  listaColaboradores: Colaborador[];
+  eliminarColaborador: (colaborador: Colaborador) => void;
 }
 
-export const Listado: React.FC<TableProps> = ({listaColaboradores}) => {
+export const Listado: React.FC<TableProps> = ({ listaColaboradores, eliminarColaborador }) => {
   return (
-	<div>
-		<InputGroup className="mb-3">
+    <div>
+      <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">
-			<i className="fa-solid fa-magnifying-glass"></i>
-		</InputGroup.Text>
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </InputGroup.Text>
         <Form.Control
           placeholder="Ingresa tu busqueda aquí"
           aria-label="Username"
           aria-describedby="basic-addon1"
         />
       </InputGroup>
-	  <Table responsive="sm">
+      <Table responsive="sm">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -35,22 +36,22 @@ export const Listado: React.FC<TableProps> = ({listaColaboradores}) => {
           </tr>
         </thead>
         <tbody>
-			{ listaColaboradores.map((colaborador) => (
-				<tr key={colaborador.id}>
-					<td>{colaborador.nombre}</td>
-					<td>{colaborador.correo}</td>
-					<td>{colaborador.edad}</td>
-					<td>{colaborador.cargo}</td>
-					<td>{colaborador.telefono}</td>
-					<td>
-						<Button variant="danger">
-							<i className="fa-solid fa-trash"></i>
-						</Button>
-					</td>
-          		</tr>
-			))}
+          {listaColaboradores.map((colaborador) => (
+            <tr key={colaborador.id}>
+              <td>{colaborador.nombre}</td>
+              <td>{colaborador.correo}</td>
+              <td>{colaborador.edad}</td>
+              <td>{colaborador.cargo}</td>
+              <td>{colaborador.telefono}</td>
+              <td>
+                <Button onClick={() => eliminarColaborador(colaborador)} variant="danger">
+                  <i className="fa-solid fa-trash"></i>
+                </Button>
+              </td>
+            </tr>
+          ))}
         </tbody>
-      </Table>      
-	</div>
+      </Table>
+    </div>
   )
 }
